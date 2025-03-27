@@ -17,7 +17,7 @@ public class Database {
         }
         throw new EntityNotFoundException(id);
     }
-    public static void delete(int id) {
+    public static void delete(int id){
         for(Entity entity : entities){
             if(entity.id == id){
                 entities.remove(entity);
