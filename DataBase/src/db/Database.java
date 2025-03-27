@@ -10,14 +10,14 @@ public class Database {
         e.id = entities.size() + 1;
         entities.add(e);
     }
-    public static Entity get(int id) throws EntityNotFoundException{
+    public static Entity get(int id){
         for(Entity entity : entities){
             if(entity.id == id)
                 return entity;
         }
         throw new EntityNotFoundException(id);
     }
-    public static void delete(int id) throws EntityNotFoundException{
+    public static void delete(int id) {
         for(Entity entity : entities){
             if(entity.id == id){
                 entities.remove(entity);
@@ -26,7 +26,7 @@ public class Database {
         }
         throw new EntityNotFoundException(id);
     }
-    public static void update(Entity e) throws EntityNotFoundException{
+    public static void update(Entity e){
         for(int i = 0; i < entities.size(); i++){
             if(entities.get(i).id == e.id){
                 entities.set(i, e);

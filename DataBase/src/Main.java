@@ -3,7 +3,7 @@ import db.exception.EntityNotFoundException;
 import example.Human;
 
 public class Main {
-    public static void main(String[] args) throws EntityNotFoundException{
+    public static void main(String[] args){
         Human[] humans = {
                 new Human("Gholi"),
                 new Human("Jamshid"),
