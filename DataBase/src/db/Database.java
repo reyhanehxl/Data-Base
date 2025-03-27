@@ -26,5 +26,13 @@ public class Database {
             throw new EntityNotFoundException("Entity with ID " + id + " not found");
         }
     }
-
+    public static void update(Entity e){
+        for(int i = 0; i < entities.size(); i++){
+            if(i + 1 == e.id){
+                entities.set(i, e);
+                return;
+            }
+            throw new EntityNotFoundException("Entity with ID " + id + " not found");
+        }
+    }
 }
