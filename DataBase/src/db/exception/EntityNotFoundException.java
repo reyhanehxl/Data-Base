@@ -8,6 +8,6 @@ public class EntityNotFoundException extends Exception{
         super(message);
     }
     public EntityNotFoundException(int id){
-        super("Cannot find entity with id={" + id + "}");
+        super("Cannot find entity with id=" + id);
     }
 }
