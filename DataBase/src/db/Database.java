@@ -17,4 +17,14 @@ public class Database {
         }
         throw new EntityNotFoundException("Entity with ID " + id + " not found");
     }
+    public static void delete(int id){
+        for(Entity entity : entities){
+            if(entity.id == id){
+                entities.remove(entity);
+                return;
+            }
+            throw new EntityNotFoundException("Entity with ID " + id + " not found");
+        }
+    }
+
 }
