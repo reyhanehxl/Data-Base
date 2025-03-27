@@ -10,29 +10,29 @@ public class Database {
         e.id = entities.size() + 1;
         entities.add(e);
     }
-    public static Entity get(int id){
+    public static Entity get(int id) throws EntityNotFoundException{
         for(Entity entity : entities){
             if(entity.id == id)
                 return entity;
         }
-        throw new EntityNotFoundException("Entity with ID " + id + " not found");
+        throw new EntityNotFoundException(id);
     }
-    public static void delete(int id){
+    public static void delete(int id) throws EntityNotFoundException{
         for(Entity entity : entities){
             if(entity.id == id){
                 entities.remove(entity);
                 return;
             }
-            throw new EntityNotFoundException("Entity with ID " + id + " not found");
         }
+        throw new EntityNotFoundException(id);
     }
-    public static void update(Entity e){
+    public static void update(Entity e) throws EntityNotFoundException{
         for(int i = 0; i < entities.size(); i++){
-            if(i + 1 == e.id){
+            if(entities.get(i).id == e.id){
                 entities.set(i, e);
                 return;
             }
-            throw new EntityNotFoundException("Entity with ID " + id + " not found");
         }
+        throw new EntityNotFoundException(e.id);
     }
 }
