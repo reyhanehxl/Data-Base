@@ -1,6 +1,7 @@
 package db;
 
 import db.exception.EntityNotFoundException;
+import db.exception.InvalidEntityException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,7 +17,13 @@ public class Database {
         validators.put(entityCode, validator);
 }
 
-    public static void add(Entity e) throws CloneNotSupportedException{
+    public static void add(Entity e) throws CloneNotSupportedException, InvalidEntityException {
+        Validator validator = validators.get(e.getClass());
+        if(validator != null){
+            validator.validate(e);
+        }else{
+            throw new IllegalArgumentException("No validator for entity code: "+ e.getClass().getName());
+        }
         e.id = entities.size() + 1;
         entities.add(e.clone());
     }
@@ -36,7 +43,13 @@ public class Database {
         }
         throw new EntityNotFoundException(id);
     }
-    public static void update(Entity e) throws CloneNotSupportedException{
+    public static void update(Entity e) throws CloneNotSupportedException, InvalidEntityException {
+        Validator validator = validators.get(e.getClass());
+        if(validator != null){
+            validator.validate(e);
+        }else{
+            throw new IllegalArgumentException("No validator for entity code: "+ e.getClass().getName());
+        }
         try{
             for(int i = 0; i < entities.size(); i++){
                 if(entities.get(i).id == e.id){
