@@ -10,10 +10,10 @@ public class Database {
         e.id = entities.size() + 1;
         entities.add(e.clone());
     }
-    public static Entity get(int id){
+    public static Entity get(int id) throws CloneNotSupportedException{
         for(Entity entity : entities){
             if(entity.id == id)
-                return entity;
+                return entity.clone();
         }
         throw new EntityNotFoundException(id);
     }
