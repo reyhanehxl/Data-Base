@@ -6,9 +6,9 @@ import java.util.ArrayList;
 
 public class Database {
     private static final ArrayList<Entity> entities = new ArrayList<>();
-    public static void add(Entity e){
+    public static void add(Entity e) throws CloneNotSupportedException{
         e.id = entities.size() + 1;
-        entities.add(e);
+        entities.add(e.clone());
     }
     public static Entity get(int id){
         for(Entity entity : entities){
