@@ -1,12 +1,10 @@
 package db;
 
-public abstract class Entity {
+public abstract class Entity implements Cloneable{
     public int id;
-    public int getId() {
-        return id;
-    }
 
-    protected void setId(int id) {
-        this.id = id;
+    @Override
+    public Entity clone() throws CloneNotSupportedException{
+        return (Entity) super.clone();
     }
 }
