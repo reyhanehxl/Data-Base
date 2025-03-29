@@ -4,21 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="095219db-c6e2-44a5-a653-90ab6ea72ad8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataBase/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataBase/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataBase/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataBase/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataBase/src/example/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/DataBase/src/example/Human.java" afterDir="false" />
-    </list>
+    <list default="true" id="095219db-c6e2-44a5-a653-90ab6ea72ad8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
