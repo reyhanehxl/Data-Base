@@ -3,9 +3,19 @@ package db;
 import db.exception.EntityNotFoundException;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Database {
     private static final ArrayList<Entity> entities = new ArrayList<>();
+    private static HashMap<Integer, Validator> validators;
+
+    public static void registerValidator(int entityCode, Validator validator) {
+        if (validators.containsKey(entityCode)) {
+            throw new IllegalArgumentException("Validator already exists for entity code: " + entityCode);
+        }
+        validators.put(entityCode, validator);
+}
+
     public static void add(Entity e) throws CloneNotSupportedException{
         e.id = entities.size() + 1;
         entities.add(e.clone());
