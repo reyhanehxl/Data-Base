@@ -26,12 +26,17 @@ public class Database {
         }
         throw new EntityNotFoundException(id);
     }
-    public static void update(Entity e){
-        for(int i = 0; i < entities.size(); i++){
-            if(entities.get(i).id == e.id){
-                entities.set(i, e);
-                return;
+    public static void update(Entity e) throws CloneNotSupportedException{
+        try{
+            for(int i = 0; i < entities.size(); i++){
+                if(entities.get(i).id == e.id){
+                    entities.set(i, e.clone());
+                    return;
+                }
             }
+
+        } catch (CloneNotSupportedException ex){
+            throw new RuntimeException("Cloning failed", ex);
         }
         throw new EntityNotFoundException(e.id);
     }
