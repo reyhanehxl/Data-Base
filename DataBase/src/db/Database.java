@@ -8,58 +8,58 @@ import java.util.HashMap;
 
 public class Database {
     private static final ArrayList<Entity> entities = new ArrayList<>();
-    private static HashMap<Integer, Validator> validators;
+    private static final HashMap<Integer, Validator> validators = new HashMap<Integer, Validator>();
 
-    public static void registerValidator(int entityCode, Validator validator) {
-        if (validators.containsKey(entityCode)) {
-            throw new IllegalArgumentException("Validator already exists for entity code: " + entityCode);
+    public static void registerValidator(int entityClass, Validator validator) {
+        if (validators.containsKey(entityClass)) {
+            throw new IllegalArgumentException("Validator already exists for entity: " + entityClass);
         }
-        validators.put(entityCode, validator);
-}
+        validators.put(entityClass, validator);
+    }
 
     public static void add(Entity e) throws CloneNotSupportedException, InvalidEntityException {
         Validator validator = validators.get(e.getClass());
-        if(validator != null){
+        if (validator != null) {
             validator.validate(e);
-        }else{
-            throw new IllegalArgumentException("No validator for entity code: "+ e.getClass().getName());
+        } else {
+            throw new IllegalArgumentException("No validator for entity type: " + e.getClass().getName());
         }
         e.id = entities.size() + 1;
         entities.add(e.clone());
     }
-    public static Entity get(int id) throws CloneNotSupportedException{
-        for(Entity entity : entities){
-            if(entity.id == id)
+
+    public static Entity get(int id) throws CloneNotSupportedException {
+        for (Entity entity : entities) {
+            if (entity.id == id) {
                 return entity.clone();
+            }
         }
         throw new EntityNotFoundException(id);
     }
-    public static void delete(int id){
-        for(Entity entity : entities){
-            if(entity.id == id){
+
+    public static void delete(int id) {
+        for (Entity entity : entities) {
+            if (entity.id == id) {
                 entities.remove(entity);
                 return;
             }
         }
         throw new EntityNotFoundException(id);
     }
+
     public static void update(Entity e) throws CloneNotSupportedException, InvalidEntityException {
         Validator validator = validators.get(e.getClass());
-        if(validator != null){
+        if (validator != null) {
             validator.validate(e);
-        }else{
-            throw new IllegalArgumentException("No validator for entity code: "+ e.getClass().getName());
+        } else {
+            throw new IllegalArgumentException("No validator for entity type: " + e.getClass().getName());
         }
-        try{
-            for(int i = 0; i < entities.size(); i++){
-                if(entities.get(i).id == e.id){
-                    entities.set(i, e.clone());
-                    return;
-                }
-            }
 
-        } catch (CloneNotSupportedException ex){
-            throw new RuntimeException("Cloning failed", ex);
+        for (int i = 0; i < entities.size(); i++) {
+            if (entities.get(i).id == e.id) {
+                entities.set(i, e.clone());
+                return;
+            }
         }
         throw new EntityNotFoundException(e.id);
     }
