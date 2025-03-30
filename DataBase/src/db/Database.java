@@ -65,6 +65,11 @@ public class Database {
         } else {
             throw new IllegalArgumentException("No validator for entity type: " + e.getClass().getName());
         }
+        if (e instanceof Trackable) {
+            Date currentDate = new Date();
+            Trackable trackableEntity = (Trackable) e;
+            trackableEntity.setLastModificationDate(currentDate);
+        }
 
         for (int i = 0; i < entities.size(); i++) {
             if (entities.get(i).id == e.id) {
