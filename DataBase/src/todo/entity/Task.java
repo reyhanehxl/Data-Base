@@ -40,4 +40,16 @@ public class Task extends Entity implements Trackable {
     public Date getLastModificationDate() {
         return this.lastModificationDate;
     }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Date getDueDate() {
+        return dueDate;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }
