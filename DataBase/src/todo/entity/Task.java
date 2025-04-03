@@ -8,13 +8,13 @@ import java.util.Date;
 
 public class Task extends Entity implements Trackable {
 
-    enum Status{NotStarted, InProgress, Completed}
+    public enum Status{NotStarted, InProgress, Completed}
     String title;
     String description;
     Date dueDate;
     private Date creationDate;
     private Date lastModificationDate;
-
+    private Status status;
 
     @Override
     public int getEntityCode() {
@@ -44,6 +44,9 @@ public class Task extends Entity implements Trackable {
     public String getTitle() {
         return title;
     }
+    public void setTitle(String title){
+        this.title = title;
+    }
 
     public Date getDueDate() {
         return dueDate;
@@ -52,4 +55,19 @@ public class Task extends Entity implements Trackable {
     public String getDescription() {
         return description;
     }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setStatus(Status status) {
+        if (status != null) {
+            this.status = status;
+            this.lastModificationDate = new Date(); // Update modification date
+        }
+    }
+    public Status getStatus() {
+        return status;
+    }
+
+
 }
