@@ -3,10 +3,12 @@ package todo.entity;
 import db.Entity;
 import db.Trackable;
 
+import javax.imageio.plugins.tiff.TIFFDirectory;
 import java.io.ObjectInputFilter;
 import java.util.Date;
 
 public class Task extends Entity implements Trackable {
+
 
     public enum Status{NotStarted, InProgress, Completed}
     String title;
@@ -50,6 +52,9 @@ public class Task extends Entity implements Trackable {
 
     public Date getDueDate() {
         return dueDate;
+    }
+    public  void setDueDate(java.sql.Date date) {
+        this.dueDate = date;
     }
 
     public String getDescription() {

@@ -3,7 +3,7 @@ package todo.entity;
 import db.Entity;
 
 public class Step extends Entity {
-    enum Status{NotStarted, Completed}
+    public enum Status{NotStarted, Completed}
     String title;
     Status status;
     int taskRef;
