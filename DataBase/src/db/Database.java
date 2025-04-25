@@ -19,7 +19,7 @@ public class Database {
     }
 
     public static void add(Entity e) throws CloneNotSupportedException, InvalidEntityException {
-        Validator validator = validators.get(e.getClass());
+        Validator validator = validators.get(e.getEntityCode());
         if (validator != null) {
             validator.validate(e);
         }
@@ -56,7 +56,7 @@ public class Database {
     }
 
     public static void update(Entity e) throws CloneNotSupportedException, InvalidEntityException {
-        Validator validator = validators.get(e.getClass());
+        Validator validator = validators.get(e.getEntityCode());
         if (validator != null) {
             validator.validate(e);
         }
